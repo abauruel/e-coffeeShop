@@ -20,6 +20,7 @@ export default {
   },
   sizes: {
     title: {
+      fontFamily: 'Baloo 2',
       lineHeight: '130%',
       xl: {
         fontSize: '48px',

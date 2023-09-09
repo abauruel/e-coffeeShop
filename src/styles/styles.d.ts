@@ -23,7 +23,7 @@ declare module 'styled-components' {
     },
     sizes: {
       title: {
-
+        fontFamily: string,
         lineHeight: string,
         xl: {
           fontSize: string,

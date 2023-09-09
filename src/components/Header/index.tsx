@@ -7,7 +7,7 @@ export function Header(props: any) {
       <img src={Logo} />
       <div>
         <button>
-          <MapPin size={32} color="#8047F8" weight='fill' />
+          <MapPin size={22} color="#8047F8" weight='fill' />
           <span>Cidade name</span>
         </button>
         <button >

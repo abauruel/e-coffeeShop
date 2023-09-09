@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import { ThemeProvider } from 'styled-components'
 import light from './styles/themes/light'
 import { Header } from './components/Header'
+import { Intro } from './components/Intro'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <ThemeProvider theme={light}>
       <GlobalStyles />
       <Header />
+      <Intro />
     </ThemeProvider>
   )
 }

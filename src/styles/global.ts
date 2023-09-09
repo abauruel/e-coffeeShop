@@ -13,6 +13,7 @@ export const GlobalStyles = createGlobalStyle`
 body {
   background: ${props => props.theme.colors.background};
   height: 100vh;
+  font-family: 'Roboto';
 }
 `
 
