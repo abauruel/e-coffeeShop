@@ -4,7 +4,7 @@ export default {
     title: "#272221",
     subtitle: "#403937",
     text: "#574f4d",
-    label: "#8d886",
+    label: "#8D8686",
     hover: "#d7d5d5",
     button: "#e6e5e5",
     input: "#ededed",
@@ -29,7 +29,7 @@ export default {
         fontSize: '48px'
       },
       m: {
-        fontSize: '24px'
+        fontSize: '24'
       },
       s: {
         fontSize: '20px'

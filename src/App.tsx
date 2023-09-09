@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import light from './styles/themes/light'
 import { Header } from './components/Header'
 import { Intro } from './components/Intro'
+import { CoffeeList } from './components/CoffeeList'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <GlobalStyles />
       <Header />
       <Intro />
+      <CoffeeList />
     </ThemeProvider>
   )
 }
