@@ -7,15 +7,22 @@ import light from './styles/themes/light'
 import { Header } from './components/Header'
 import { Intro } from './components/Intro'
 import { CoffeeList } from './components/CoffeeList'
+import { Router } from './routes'
+import { BrowserRouter } from 'react-router-dom'
+import { ContextProvider } from './context/Context'
 
 function App() {
 
   return (
     <ThemeProvider theme={light}>
       <GlobalStyles />
-      <Header />
-      <Intro />
-      <CoffeeList />
+      <ContextProvider>
+
+        <Header />
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </ContextProvider>
     </ThemeProvider>
   )
 }

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+
+
 export const Wrapper = styled.nav`
 height: 104px;
 width: '100%';
@@ -28,7 +30,28 @@ padding-inline: 160px;
       background: ${props => props.theme.colors.yellowLight};
       width: 38px;
       margin-left: 12px;
+      position: relative;
+
+      > span{
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        /* padding: 2px; */
+        margin: 2px;
+        background: #C47F17;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 12px;
+        line-height: 130;
+        font-weight: bold;
+      }
     }
+    
   }
  }
 `
