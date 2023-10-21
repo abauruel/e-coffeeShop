@@ -3,6 +3,7 @@ import Logo from '../../assets/LogoCoffeeDelivery.svg'
 import { MapPin, ShoppingCartSimple } from 'phosphor-react'
 import { useContext } from 'react'
 import { CartContext } from '../../context/Context'
+import { Link } from 'react-router-dom'
 // import { Context } from '../../context/Context'
 export function Header(props: any) {
   const { cartItems } = useContext(CartContext)
@@ -15,14 +16,14 @@ export function Header(props: any) {
           <span
           >Cidade name</span>
         </button>
-        <button>
+        <Link to={'/checkout'}>
           <ShoppingCartSimple color="#C47F17" size={32} weight='fill'
           />
           {cartItems?.length > 0 &&
 
             <span>{cartItems.length}</span>
           }
-        </button>
+        </Link>
 
       </div>
     </Wrapper>

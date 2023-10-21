@@ -26,7 +26,15 @@ padding-inline: 160px;
         margin: 0 4px 0 4px;
         font-size: ${props => props.theme.sizes.text.s}
       }
-    &:last-child{
+      cursor: pointer;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      height: 38px;
       background: ${props => props.theme.colors.yellowLight};
       width: 38px;
       margin-left: 12px;
@@ -52,6 +60,5 @@ padding-inline: 160px;
       }
     }
     
-  }
  }
 `

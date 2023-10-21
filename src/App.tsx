@@ -18,8 +18,8 @@ function App() {
       <GlobalStyles />
       <ContextProvider>
 
-        <Header />
         <BrowserRouter>
+          <Header />
           <Router />
         </BrowserRouter>
       </ContextProvider>
