@@ -1,6 +1,11 @@
 import { AddressLabel, BairroCidadeUFWrapper, CEPContainer, Content, RuaComplementoContainer, RuaContainer } from "./styles";
 import { MapPinLine } from 'phosphor-react'
-export function Address() {
+import { UseFormRegister, FieldValues } from 'react-hook-form'
+
+type AddressType = {
+  register: UseFormRegister<FieldValues>
+}
+export function Address({ register }: AddressType) {
   return (
     <Content>
       <AddressLabel>
@@ -12,31 +17,31 @@ export function Address() {
       </AddressLabel>
 
       <CEPContainer>
-        <input type="text" placeholder="CEP" />
+        <input type="text" placeholder="CEP" {...register('cep')} />
       </CEPContainer>
       <RuaContainer>
-        <input type="text" placeholder="Rua" />
+        <input type="text" placeholder="Rua" {...register('rua')} />
       </RuaContainer>
       <RuaComplementoContainer>
         <div>
-          <input type="text" placeholder="Número" />
+          <input type="text" placeholder="Número" {...register('numero')} />
         </div>
         <div>
-          <input type="text" placeholder="Complemento" />
+          <input type="text" placeholder="Complemento" {...register('complemento')} />
           <small>opcional</small>
         </div>
       </RuaComplementoContainer>
       <BairroCidadeUFWrapper>
         <div>
-          <input type="text" placeholder="Bairro" />
+          <input type="text" placeholder="Bairro"  {...register('bairro')} />
         </div>
 
 
         <div>
-          <input type="text" placeholder="Cidade" />
+          <input type="text" placeholder="Cidade" {...register('cidade')} />
         </div>
         <div>
-          <input type="text" min={2} max={2} placeholder="UF" />
+          <input type="text" min={2} max={2} placeholder="UF"  {...register('uf')} />
         </div>
 
 

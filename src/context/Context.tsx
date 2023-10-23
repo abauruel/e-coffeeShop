@@ -6,6 +6,23 @@ type cartContextType = {
   cartItems: coffeeType[]
   handleUpdateCartItems: (item: payloadType) => void
   handleRemoveCartItem: (item: payloadType) => void
+
+  address: addressType
+  setAddress: (address: addressType) => void
+
+  paymentMethod: string
+  setPaymentMethod: (method: string) => void
+
+}
+
+export type addressType = {
+  cep: string,
+  rua: string,
+  numero: number,
+  complemento?: string,
+  bairro: string,
+  cidade: string,
+  uf: string,
 }
 type coffeeType = {
   uri: string,
@@ -54,9 +71,12 @@ export function ContextProvider({ children }: ContextProps) {
 
       return state
     }, [])
-
+  const [address, setAddress] = useState<addressType>({} as addressType)
+  const [paymentMethod, setPaymentMethod] = useState('')
 
   async function handleUpdateCartItems(item: payloadType) {
+    const stateJSON = JSON.stringify(item)
+    localStorage.setItem('@coffee:state-1.0.0', stateJSON)
     dispatch({
       type: 'ADD_COFFEE',
       payload: item
@@ -64,6 +84,8 @@ export function ContextProvider({ children }: ContextProps) {
   }
 
   async function handleRemoveCartItem(item: payloadType) {
+    const stateJSON = JSON.stringify(item)
+    localStorage.setItem('@coffee:state-1.0.0', stateJSON)
     dispatch({
       type: 'REMOVE_COFFEE',
       payload: item
@@ -73,7 +95,13 @@ export function ContextProvider({ children }: ContextProps) {
 
 
   return (
-    <CartContext.Provider value={{ cartItems, handleUpdateCartItems, handleRemoveCartItem }}>
+    <CartContext.Provider value={{
+      cartItems,
+      handleUpdateCartItems,
+      handleRemoveCartItem,
+      address, setAddress,
+      paymentMethod, setPaymentMethod
+    }}>
       {children}
     </CartContext.Provider>
   )

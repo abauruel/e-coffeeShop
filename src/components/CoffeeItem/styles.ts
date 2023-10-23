@@ -77,6 +77,12 @@ align-items: center;
   margin-right: 23px;
   
 }
+> button {
+  cursor: pointer;
+  :hover{
+    opacity: 80%;
+  }
+}
 
 `
 

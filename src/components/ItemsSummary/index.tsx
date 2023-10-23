@@ -76,7 +76,7 @@ export function ItemsSummary() {
         <div> <span>Total</span> <span>R$ {(total).toFixed(2)}</span></div>
       </TotalPriceContainer>
 
-      <button>confirmar pedido</button>
+      <button type='submit'>confirmar pedido</button>
 
     </ItemsSummaryContainer>
   )

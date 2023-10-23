@@ -9,7 +9,9 @@ export function Header(props: any) {
   const { cartItems } = useContext(CartContext)
   return (
     <Wrapper>
-      <img src={Logo} />
+      <Link to='/'>
+        <img src={Logo} />
+      </Link>
       <div>
         <button>
           <MapPin size={22} color="#8047F8" weight='fill' />
