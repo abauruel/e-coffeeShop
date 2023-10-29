@@ -1,4 +1,4 @@
-import { FormEvent, useContext } from "react";
+import { FormEvent, useContext, useEffect } from "react";
 import { Address } from "../../components/Address";
 import { ItemsSummary } from "../../components/ItemsSummary";
 import { PaymentMethod } from "../../components/PaymentMethod";
@@ -11,12 +11,13 @@ import { useNavigate } from 'react-router-dom'
 
 export function Checkout() {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const { setAddress, setPaymentMethod } = useContext(CartContext)
+  const { setAddress, setPaymentMethod, address, setCartItems } = useContext(CartContext)
 
   const navigate = useNavigate()
   async function handleOnSubmit(event: any) {
     // event.preventDefault()
     if (event) {
+      console.log('aqui')
 
 
       const addressFormData = {
@@ -31,10 +32,17 @@ export function Checkout() {
 
       setAddress(addressFormData)
       setPaymentMethod(event.paymentMethod)
-      navigate('/success')
+
+
+      if (address?.cep.length > 0) {
+        console.log("tamanho: ", address)
+        localStorage.removeItem('@coffee:state-1.0.0')
+        navigate('/success')
+      }
 
     }
   }
+
   return (
     <Content>
       <form onSubmit={handleSubmit(handleOnSubmit)}>

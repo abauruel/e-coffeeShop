@@ -31,8 +31,8 @@ export function ItemsSummary() {
     <ItemsSummaryContainer>
       <div>
         {cartItems.map(item => (
-          <>
-            <ItemCart key={item.name}>
+          <div key={item.name}>
+            <ItemCart >
               <div>
                 <img src={item.uri} alt="" />
                 <div>
@@ -64,7 +64,7 @@ export function ItemsSummary() {
               <span>R$ {(item.amount * item.price).toFixed(2)}</span>
             </ItemCart>
             <Divider />
-          </>
+          </div>
         ))}
 
       </div>

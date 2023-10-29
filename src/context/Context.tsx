@@ -1,4 +1,5 @@
 import { Children, ReactNode, createContext, useReducer, useState } from 'react'
+import { cartReducer, coffeeType as cartItemsType } from '../reducers/cart/reducer'
 
 type cartContextType = {
   coffees?: [coffeeType],
@@ -46,35 +47,33 @@ type payloadType = {
 export const CartContext = createContext({} as cartContextType)
 
 
+function createInitialState() {
+  const initialState = [] as any[]
+
+
+}
+
 
 export function ContextProvider({ children }: ContextProps) {
 
-  const [cartItems, dispatch] = useReducer(
-    (state: coffeeType[], action: any) => {
 
-      if (action.type == 'ADD_COFFEE') {
-        const coffeeAlready = state.find(s => s.name == action.payload.name)
-        if (coffeeAlready) {
-          const newState = state.filter(s => s.name !== coffeeAlready.name)
-          newState.push(action.payload)
-          return newState
-        }
-
-        return [...state, action.payload]
+  const [cartState, dispatch] = useReducer(
+    cartReducer, { cartItems: [] }, (initialState) => {
+      const storedStateAsJson = localStorage.getItem('@coffee:state-1.0.0')
+      console.log('stored: ', storedStateAsJson)
+      if (storedStateAsJson) {
+        return JSON.parse(storedStateAsJson)
       }
 
-      if (action.type == 'REMOVE_COFFEE') {
-        const newState = state.filter(s => s.name !== action.payload.name)
-        return newState
-      }
+      return initialState
+    })
 
-
-      return state
-    }, [])
+  const { cartItems } = cartState
   const [address, setAddress] = useState<addressType>({} as addressType)
   const [paymentMethod, setPaymentMethod] = useState('')
 
   async function handleUpdateCartItems(item: payloadType) {
+
     const stateJSON = JSON.stringify(item)
     localStorage.setItem('@coffee:state-1.0.0', stateJSON)
     dispatch({
@@ -84,8 +83,6 @@ export function ContextProvider({ children }: ContextProps) {
   }
 
   async function handleRemoveCartItem(item: payloadType) {
-    const stateJSON = JSON.stringify(item)
-    localStorage.setItem('@coffee:state-1.0.0', stateJSON)
     dispatch({
       type: 'REMOVE_COFFEE',
       payload: item
